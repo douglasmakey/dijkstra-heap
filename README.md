@@ -47,7 +47,7 @@ If you want to read more about Dijkstra you should read this article that I foun
 
 ## Implementation
 
-Dijkstra is an algorithm for searching the short path between two nodes, visiting the neighbors of each node and calculating the cost and the path from origin node keeping always the smallest value, for that we can use a heap to keep the min value in each iteration, using push and pop operation, both operations are n(log n).
+Dijkstra is an algorithm for searching the short path between two nodes, visiting the neighbors of each node and calculating the cost and the path from origin node keeping always the smallest value, for that we can use a heap to keep the min value in each iteration, using push and pop operation, both operations are O(log n).
 
 First we need to implement for min heap, golang has a package in its standard library for that.
 
