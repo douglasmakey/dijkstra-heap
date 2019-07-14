@@ -34,7 +34,7 @@
 
 ## Why?
 
-I am trying to learn about graphs and its algorithms because I never went to the university so I don't know much about graph, for that I try to read and learn about this in my freetime, I recently watched a video about one implementation of dijkstra in python using a heap was interesting, so I decided do the same but with go.
+I am trying to learn about graphs and its algorithms because I never went to the university so I don't know much about graph, because of that I try to read and learn about this in my free time, I recently watched a video about one implementation of Dijkstra in python using a heap was interesting, so I decided to do the same but with go.
 
 I know that there are many articles abouth the same topic and these article explain very well what is dijkstra or what is a heap, this article will be a short article just focus on the implementation, I want to show you a very simple implementation of dijkstra using heap in Golang.
 
@@ -44,7 +44,10 @@ If you want to read more about Dijkstra you should read this article that I foun
 [An excelenct article](https://medium.com/basecs/finding-the-shortest-path-with-a-little-help-from-dijkstra-613149fbdc8e)
 
 
+
 ## Implementation
+
+Dijkstra is an algorithm for searching the short path between two nodes, visiting the neighbors of each node and calculating the cost and the path from origin node keeping always the smallest value, for that we can use a heap to keep the min value in each iteration, using push and pop operation, both operations are n(log n).
 
 First we need to implement for min heap, golang has a package in its standard library for that.
 
@@ -206,6 +209,7 @@ Dijkstra
 12 [S C B D E T]
 ```
 
+[Github](https://github.com/douglasmakey/dijkstra-heap)
 
 
 
