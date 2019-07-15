@@ -140,20 +140,15 @@ func (g *graph) getEdges(node string) []edge {
 
 func (g *graph) getPath(origin, destiny string) (int, []string) {
 	h := newHeap()
-
-	for _, e := range g.getEdges(origin) {
-		h.push(path{value: e.weight, nodes: []string{origin, e.node}})
-	}
-
-	visited := []string{}
-	visited = append(visited, origin)
+	h.push(path{value: 0, nodes: []string{origin}})
+	visited := make(map[string]bool)
 
 	for len(*h.values) > 0 {
 		// Find the nearest yet to visit node
 		p := h.pop()
 		node := p.nodes[len(p.nodes)-1]
 
-		if wasVisited(node, visited) {
+		if visited[node] {
 			continue
 		}
 
@@ -162,13 +157,13 @@ func (g *graph) getPath(origin, destiny string) (int, []string) {
 		}
 
 		for _, e := range g.getEdges(node) {
-			if !wasVisited(e.node, visited) {
+			if !visited[e.node] {
 				// We calculate the total spent so far plus the cost and the path of getting here
 				h.push(path{value: p.value + e.weight, nodes: append(p.nodes, e.node)})
 			}
 		}
 
-		visited = append(visited, node)
+		visited[node] = true
 	}
 
 	return 0, nil
