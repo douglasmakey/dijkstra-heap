@@ -43,7 +43,7 @@ func (g *graph) getPath(origin, destiny string) (int, []string) {
 		for _, e := range g.getEdges(node) {
 			if !visited[e.node] {
 				// We calculate the total spent so far plus the cost and the path of getting here
-				h.push(path{value: p.value + e.weight, nodes: append(p.nodes, e.node)})
+				h.push(path{value: p.value + e.weight, nodes: append([]string{}, append(p.nodes, e.node)...)})
 			}
 		}
 
