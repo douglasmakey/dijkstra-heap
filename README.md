@@ -1,23 +1,25 @@
+
 # Simple implementation of Dijkstra using heap in Go.
 
-## What is Dijkstra ?
+## What is Dijkstra?
+
 ![Dijkstra](https://upload.wikimedia.org/wikipedia/commons/5/57/Dijkstra_Animation.gif)
 
 *MEGA SHORT DESCRIPTION: Dijkstra's algorithm to find the shortest path between a and b. It picks the unvisited node with the lowest distance, calculates the distance through it to each unvisited neighbor, and updates the neighbor's distance if smaller.*
 
-* Mark all nodes unvisited. Create a set of all the unvisited nodes called the unvisited set, in our case we are going to use a set for visited nodes not for unvisited nodes.
+* Mark all nodes unvisited. Create a set of all the unvisited nodes called the unvisited set, in our case we are going to use a set for visited nodes, not for unvisited nodes.
 
 * Assign to every node a tentative distance value: set it to zero for our initial node. Set the initial node as current.
 
-* For the current node, consider all of its unvisited neighbours and calculate their tentative distances through the current node. Compare the newly calculated tentative distance to the current assigned value and assign the smaller one. For example, if the current node A is marked with a distance of 6, and the edge connecting it with a neighbour B has length 2, then the distance to B through A will be 6 + 2 = 8. If B was previously marked with a distance greater than 8 then change it to 8. Otherwise, keep the current value.
+* For the current node, consider all of its unvisited neighbors and calculate their tentative distances through the current node. Compare the newly calculated tentative distance to the current assigned value and assign the smaller one. For example, if the current node A is marked with a distance of 6, and the edge connecting it with a neighbor B has length 2, then the distance to B through A will be 6 + 2 = 8. If B was previously marked with a distance greater than 8 then change it to 8. Otherwise, keep the current value.
 
-* When we are done considering all of the unvisited neighbours of the current node, mark the current node as visited. A visited node will never be checked again.
+* When we are done considering all of the unvisited neighbors of the current node, mark the current node as visited. A visited node will never be checked again.
 
 * Select next unvisited node that is marked with the smallest tentative distance, set it as the new "current node", and go back to step 3.
 
 [Wikipedia](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
 
-## What is Heap ?
+## What is Heap?
 
 ![Heap](https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Max-Heap.svg/2560px-Max-Heap.svg.png)
 
@@ -36,10 +38,10 @@
 
 I am trying to learn about graphs and its algorithms because I never went to the university so I don't know much about graph, because of that I try to read and learn about this in my free time, I recently watched a video about one implementation of Dijkstra in python using a heap was interesting, so I decided to do the same but with go.
 
-I know that there are many articles abouth the same topic and these article explain very well what is dijkstra or what is a heap, this article will be a short article just focus on the implementation, I want to show you a very simple implementation of dijkstra using heap in Golang.
+I know that there are many articles about the same topic and these articles explain very well what is Dijkstra or what is a heap, this article will be a short article just focus on the implementation, I want to show you a very simple implementation of Dijkstra using heap in Golang.
 
 
-If you want to read more about Dijkstra you should read this article that I found it is amazing.
+If you want to read more about Dijkstra you should read this article that I found is amazing.
 
 [An excelenct article](https://medium.com/basecs/finding-the-shortest-path-with-a-little-help-from-dijkstra-613149fbdc8e)
 
@@ -47,9 +49,9 @@ If you want to read more about Dijkstra you should read this article that I foun
 
 ## Implementation
 
-Dijkstra is an algorithm for searching the short path between two nodes, visiting the neighbors of each node and calculating the cost and the path from origin node keeping always the smallest value, for that we can use a heap to keep the min value in each iteration, using push and pop operation, both operations are O(log n).
+Dijkstra is an algorithm for searching the short path between two nodes, visiting the neighbors of each node and calculating the cost and the path from origin node keeping always the smallest value, for that we can use a min-heap to keep the min value in each iteration, using push and pop operation, both operations are O(log n).
 
-First we need to implement for min heap, golang has a package in its standard library for that.
+First, we need to implement for min-heap, golang has a package in its standard library for that.
 
 the Package heap provides heap operations for any type that implements heap.Interface. A heap is a tree with the property that each node is the minimum-valued node in its subtree.
 
@@ -138,6 +140,7 @@ func (g *graph) getEdges(node string) []edge {
 	return g.nodes[node]
 }
 
+
 func (g *graph) getPath(origin, destiny string) (int, []string) {
 	h := newHeap()
 	h.push(path{value: 0, nodes: []string{origin}})
@@ -168,6 +171,7 @@ func (g *graph) getPath(origin, destiny string) (int, []string) {
 
 	return 0, nil
 }
+
 
 ```
 
@@ -205,7 +209,3 @@ Dijkstra
 ```
 
 [Github](https://github.com/douglasmakey/dijkstra-heap)
-
-
-
-
